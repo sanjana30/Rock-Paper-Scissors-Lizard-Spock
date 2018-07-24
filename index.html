@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors Part 2
+  </title>
+</head>
+
+<body>
+
+  <div id="game">
+      <p> <b>Scissors  cuts Paper<br>
+          Paper covers Rock <br>
+          Rock crushes Lizard <br>
+          Lizard poisons Spock <br>
+          Spock smashes Scissors<br>
+          Scissors decapitates Lizard<br>
+          Lizard eats Paper<br>
+          Paper disproves Spock<br>
+          Spock vaporizes Rock<br>
+          (and as it always has) Rock crushes Scissors</b></p>
+      <p><em>Rock : r<br>Paper: p<br>Scissors : s<br>Lizard : l<br>Spoke : k</em></p>
+      <p>User Guess:</p> <span id="user"><strong> </strong></span>
+      <p>Computer Guess: </p> <span id="computer"><strong> </strong></span>
+      <h2>Wins: <span id="winId"><strong> </strong></span></h2>
+      <h2>Losses: <span id="lossId"><strong> </strong></span></h2>
+      <h2>Ties: <span id="tieId"><strong> </strong></span></h2>
+
+  </div>
+
+  <script type="text/javascript">
+
+    // Creates an array that lists out all of the options (Rock, Paper, or Scissors).
+    var computerChoices = ["r", "p", "s", "l", "k"];
+    var ties = 0;
+    var wins = 0;
+    var losses = 0;
+
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {
+
+      // Determines which key was pressed.
+      var userGuess = event.key;
+
+      // Randomly chooses a choice from the options array. This is the Computer's guess.
+      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+      // Alerts the key the user pressed (userGuess).
+      alert("User guess: " + userGuess);
+      var ug = document.getElementById("user");
+      ug.textContent = userGuess;
+
+      // Alerts the Computer's guess.
+      alert("Computer guess: " + computerGuess);
+      var cg = document.getElementById("computer");
+      cg.textContent = computerGuess;
+
+      if ((userGuess === "r" && computerGuess === "r") || (userGuess === "p" && computerGuess === "p") || (userGuess ==="s" && computerGuess === "s" )||(userGuess==="k"&&computerGuess==="k") || (userGuess==="l" && computerGuess==="l")){
+        ties = ties +1;
+      }
+      else if((userGuess === "r" && computerGuess === "s") || (userGuess === "p" && computerGuess === "r") || (userGuess === "s" && computerGuess === "p") || (userGuess==="r" && computerGuess==="l") || (userGuess==="p" && computerGuess==="k")||(userGuess==="s" && computerGuess === "l")||(userGuess==="l"&&computerGuess==="p")||(userGuess==="l"&& computerGuess==="k")||(userGuess==="k"&&computerGuess==="r")||(userGuess==="k"&&computerGuess==="s")){
+        wins = wins +1;
+      }
+      else{
+        losses =losses +1;
+      }
+      alert ("ties= " +ties+ " wins= " +wins+ " losses= " +losses);
+      var win = document.getElementById("winId");
+      win.textContent = wins;
+      var loss = document.getElementById("lossId");
+      loss.textContent = losses;
+      var tie = document.getElementById("tieId");
+      tie.textContent = ties;
+      
+    };
+    // alert ("ties= " +ties);
+    // alert("wins= " +wins);
+    // alert("losses= " +losses);
+  </script>
+
+</body>
+
+</html>
